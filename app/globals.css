@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f9fc;
+  --foreground: #10233f;
+  --navy: #061d3b;
+  --navy-soft: #0b2e58;
+  --gold: #f7c316;
+  --gold-dark: #e3ad08;
+  --leaf: #49a942;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(247, 195, 22, 0.35);
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.solar-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.panel-placeholder {
+  background:
+    linear-gradient(135deg, rgba(6, 29, 59, 0.9), rgba(17, 86, 141, 0.88)),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 54px,
+      rgba(255, 255, 255, 0.16) 55px,
+      rgba(255, 255, 255, 0.16) 57px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 38px,
+      rgba(255, 255, 255, 0.14) 39px,
+      rgba(255, 255, 255, 0.14) 41px
+    );
+}
+
+.shine::after {
+  animation: shine 3.8s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.42),
+    transparent
+  );
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 34%;
+}
+
+.float-soft {
+  animation: float-soft 4.5s ease-in-out infinite;
+}
