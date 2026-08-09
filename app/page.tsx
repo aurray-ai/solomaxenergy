@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { AnimatedGallery } from "@/components/AnimatedGallery";
 import {
   ArrowRight,
   Award,
@@ -12,7 +13,6 @@ import {
   Factory,
   Leaf,
   MapPin,
-  Menu,
   PiggyBank,
   ShieldCheck,
   SolarPanel,
@@ -20,8 +20,6 @@ import {
   UsersRound,
   Zap,
 } from "lucide-react";
-
-const navItems = ["Home", "About Us", "Services", "Projects", "Why Choose Us", "Contact"];
 
 const benefits = [
   {
@@ -136,57 +134,18 @@ function PlaceholderImage({
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f9fc] text-[#10233f]">
-      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur">
-        <div className="mx-auto flex h-[74px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a href="#home" className="flex items-center gap-3" aria-label="Solomax home">
-            <Image
-              src="/logo.jpeg"
-              alt="Solomax Renewable Energy Ltd logo"
-              width={64}
-              height={64}
-              className="h-14 w-14 object-contain"
-              priority
-            />
-            <div className="leading-none">
-              <p className="text-xl font-black uppercase text-[#061d3b]">Solomax</p>
-              <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.28em] text-slate-500">
-                Renewable Energy Ltd
-              </p>
-            </div>
-          </a>
-
-          <nav className="hidden items-center gap-8 lg:flex">
-            {navItems.map((item, index) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replaceAll(" ", "-")}`}
-                className={`text-[12px] font-bold transition hover:text-[#f7c316] ${
-                  index === 0 ? "text-[#f7c316]" : "text-[#061d3b]"
-                }`}
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden lg:block">
-            <ButtonLink href="#contact">Request a Quote</ButtonLink>
-          </div>
-
-          <button
-            className="flex h-11 w-11 items-center justify-center rounded border border-slate-200 text-[#061d3b] lg:hidden"
-            aria-label="Open menu"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
-        </div>
-      </header>
-
       <section id="home" className="relative overflow-hidden bg-white">
         <div className="absolute inset-0">
-          <PlaceholderImage label="Hero solar image placeholder" className="h-full w-full" />
+          <Image
+            src="/gallery/hero.png"
+            alt="Solar panels and renewable energy landscape"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/86 to-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/88 via-52% to-white/8" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(247,195,22,0.32),transparent_28%)]" />
 
         <div className="relative mx-auto grid min-h-[520px] max-w-7xl items-center px-4 py-16 sm:px-6 lg:min-h-[610px] lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
@@ -224,7 +183,14 @@ export default function Home() {
             className="pointer-events-none relative hidden h-[430px] lg:block"
           >
             <div className="float-soft absolute bottom-2 right-2 h-[330px] w-[560px] skew-x-[-13deg] overflow-hidden rounded-tl-[70px] border border-white/50 shadow-2xl shadow-[#061d3b]/30">
-              <PlaceholderImage label="Solar field placeholder" className="h-full w-full" />
+              <Image
+                src="/gallery/hero.png"
+                alt="Solar energy installation"
+                fill
+                sizes="560px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#061d3b]/35" />
             </div>
             <div className="absolute right-10 top-8 flex h-24 w-24 items-center justify-center rounded-full bg-[#f7c316] text-[#061d3b] shadow-xl">
               <Zap className="h-10 w-10" />
@@ -260,10 +226,15 @@ export default function Home() {
       <section id="about-us" className="bg-white py-16 sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_1fr_0.55fr] lg:items-center lg:px-8">
           <motion.div {...fadeUp} className="relative">
-            <PlaceholderImage
-              label="Installation team placeholder"
-              className="min-h-[330px] rounded shadow-xl shadow-slate-200"
-            />
+            <div className="relative min-h-[330px] overflow-hidden rounded bg-[#6b351a] shadow-xl shadow-slate-200">
+              <Image
+                src="/gallery/about.jpeg"
+                alt="Solomax Renewable Energy Ltd company profile and project collage"
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-contain"
+              />
+            </div>
             <div className="absolute -bottom-5 left-6 flex items-center gap-3 rounded bg-[#f7c316] px-5 py-4 text-[#061d3b] shadow-xl">
               <Award className="h-8 w-8" />
               <div>
@@ -427,7 +398,7 @@ export default function Home() {
                   className="flex gap-3 rounded border border-slate-200 bg-[#fbfcff] p-4"
                 >
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#49a942]" />
-                  <p className="text-sm font-semibold leading-6 text-slate-650">{principle}</p>
+                  <p className="text-sm font-semibold leading-6 text-slate-600">{principle}</p>
                 </div>
               ))}
             </div>
@@ -463,6 +434,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <AnimatedGallery />
 
       <section id="projects" className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
